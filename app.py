@@ -3,9 +3,10 @@ from tkinter import Label
 from PIL import Image, ImageTk
 import cv2
 import imageio
+import os  # Import os module to handle paths
 
 class FaceRecognitionApp:
-    def init(self, window, window_title, gif_path):
+    def __init__(self, window, window_title, gif_path):
         self.window = window
         self.window.title(window_title)
         self.window.geometry("1280x720")  # Adjusted window size
@@ -69,7 +70,8 @@ class FaceRecognitionApp:
 
         self.window.after(10, self.update)
 
-if _name_ == "main":
-    gif_path = r"BG.gif"  # Using raw string to avoid unicode error
+if __name__ == "__main__":
+    # Use a relative path to the GIF file
+    gif_path = os.path.join("assets", "BG.gif")  # Make sure the 'assets' folder contains your GIF file
     root = tk.Tk()
     app = FaceRecognitionApp(root, "J.U.L.I.E 1.0.0", gif_path)
